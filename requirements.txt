@@ -1,0 +1,8 @@
+numpy
+pandas
+matplotlib
+seaborn
+datetime
+streamlit
+wordcloud
+scikit-learn
