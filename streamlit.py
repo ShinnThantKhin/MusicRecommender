@@ -132,7 +132,7 @@ def main():
     song_name = st.text_input('Enter the name of the song')
     if song_name != '':
         song_name = song_name.upper()
-    st.markdown("<font color='red'>If you are not sure if the song is in the database or not sure, Please click the button below to search for the song!</font>")
+    st.markdown("If you are not sure if the song is in the database or not sure, Please click the button below to search for the song!")
     if st.button('Search for my song'):
         found_flag, found_song = search_song(song_name, data)
         if found_flag:
