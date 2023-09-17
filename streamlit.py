@@ -132,7 +132,7 @@ def main():
     song_name = st.text_input('Enter the name of the song')
     if song_name != '':
         song_name = song_name.upper()
-    st.markdown( "### If you are not sure if the song is in the database or not sure, Please click the button below to search for the song!")
+    st.markdown( "*** If you are not sure if the song is in the database or not sure, Please click the button below to search for the song! ")
     if st.button('Search for my song'):
         found_flag, found_song = search_song(song_name, data)
         if found_flag:
@@ -167,8 +167,8 @@ def main():
             st.pyplot(fig_cloud)
 
             # show the most similar songs in bar chart
-            fig_bar = show_similar_songs(song_name, year, data, features, top_n=10, plot_type='bar')
-            st.markdown("### Get a closer look at the top 10 recommendations for you!")
+            fig_bar = show_similar_songs(song_name, year, data, features, top_n=5, plot_type='bar')
+            st.markdown("### Get a closer look at the top 5 recommendations for you!")
             st.pyplot(fig_bar)
 
 if __name__ == "__main__":
