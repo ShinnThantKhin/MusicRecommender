@@ -39,15 +39,6 @@ def get_feature_vector(song_name, year, data, features_list):
 
 # define a function to get the most similar songs
 def show_similar_songs(song_name, year, data, features_list, top_n=10, plot_type='wordcloud', font_path=None):
-    """
-    A function to get the most similar songs based on the cosine similarity of the features.
-    :param song_name: the name of the song (all letters)
-    :param year: the year of the song [int]
-    :param dat: the dataset
-    :param features_list: the list of features to be used for similarity calculation
-    :param top_n: the number of similar songs to be returned
-    :param plot_type: the type of plot to be used for visualization (wordcloud or barplot)
-    """
     feature_vector, song_repeated = get_feature_vector(song_name, year, data, features_list)
     feature_for_recommendation = data[features_list].values
     # calculate the cosine similarity
@@ -136,16 +127,12 @@ def main():
     st.markdown("Welcome to music recommender! \
                 \n You can search for a song and get recommendations based on the song you searched for. Enjoy!")
 
-    # add selectbox for selecting the features
-    st.markdown("### Select Features")
-    features = st.multiselect('Select the features you care about', all_features, default=all_features)
-
     # add a search box for searching the song by giving capital letters and year
     st.markdown("### Ready to get recommendations based on song?")
     song_name = st.text_input('Enter the name of the song')
     if song_name != '':
         song_name = song_name.upper()
-    st.markdown( "If you are not sure if the song is in the database or not sure,/n Please click the button below to search for the song")
+    st.markdown( "###If you are not sure if the song is in the database or not sure, Please click the button below to search for the song")
     if st.button('Search for my song'):
         found_flag, found_song = search_song(song_name, data)
         if found_flag:
@@ -157,6 +144,10 @@ def main():
     year = st.text_input('Enter the year of the song (e.g. 2019)')
     if year != '':
         year = int(year)
+
+    # add selectbox for selecting the features
+    st.markdown("### Select Features")
+    features = st.multiselect('Select the features you care about', all_features, default=all_features)
 
     # add a slider for selecting the number of recommendations
     st.markdown("### Number of Recommendations")
