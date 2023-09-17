@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import datetime
 import streamlit as st
-import matplotlib.pyplot as plt
-import seaborn as sns
 sns.set_palette("Set2")
 from wordcloud import WordCloud
 from sklearn.metrics.pairwise import cosine_similarity
