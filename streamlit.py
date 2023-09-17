@@ -134,22 +134,18 @@ st.markdown(
 def main():
     st.title("Music Recommender")
     st.markdown("Welcome to music recommender! \
-                \n You can search for a song and get recommendations based on the song you searched for. \
-                \n You can also customize the recommendations by selecting the features you care about. Enjoy!")
+                \n You can search for a song and get recommendations based on the song you searched for. Enjoy!")
 
     # add selectbox for selecting the features
-    st.sidebar.markdown("### Select Features")
-    features = st.sidebar.multiselect('Select the features you care about', all_features, default=all_features)
-    # add a slider for selecting the number of recommendations
-    st.sidebar.markdown("### Number of Recommendations")
-    num_recommendations = st.sidebar.slider('Select the number of recommendations', 10, 50, 10)
+    st.markdown("### Select Features")
+    features = st.multiselect('Select the features you care about', all_features, default=all_features)
 
     # add a search box for searching the song by giving capital letters and year
     st.markdown("### Ready to get recommendations based on song?")
     song_name = st.text_input('Enter the name of the song')
     if song_name != '':
         song_name = song_name.upper()
-        
+    st.markdown( "If you are not sure if the song is in the database or not sure,/n Please click the button below to search for the song")
     if st.button('Search for my song'):
         found_flag, found_song = search_song(song_name, data)
         if found_flag:
@@ -158,11 +154,13 @@ def main():
         else:
             st.markdown("Sorry, this song is not in the dataset. Please try another song!")
 
-    year = st.text_input('Enter the year of the song (e.g. 2019). \
-                         \nIf you are not sure if the song is in the database or not sure about the year, \
-                         please leave the year blank and click the button below to search for the song.')
+    year = st.text_input('Enter the year of the song (e.g. 2019)')
     if year != '':
         year = int(year)
+
+    # add a slider for selecting the number of recommendations
+    st.markdown("### Number of Recommendations")
+    num_recommendations = st.slider('Select the number of recommendations', 5, 20, 10)
 
     if st.button('Get Recommendations'):
         if song_name == '':
