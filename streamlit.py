@@ -149,7 +149,7 @@ def main():
 
     # add a slider for selecting the number of recommendations
     st.markdown("### Number of Recommendations")
-    num_recommendations = st.slider('Select the number of recommendations', 0, 20, 10)
+    num_recommendations = st.slider('Select the number of recommendations', 10, 30, 10)
 
     if st.button('Get Recommendations'):
         if song_name == '':
