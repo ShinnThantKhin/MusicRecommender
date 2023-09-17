@@ -147,7 +147,7 @@ def main():
 
     # add selectbox for selecting the features
     st.markdown("### Select Features")
-    features = st.multiselect('Select the features you care about', all_features, default=none)
+    features = st.multiselect('Select the features you care about', all_features, default=0)
 
     # add a slider for selecting the number of recommendations
     st.markdown("### Number of Recommendations")
